@@ -1,9 +1,12 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { api } from "../../services/api";
+import { useNavigate } from "react-router-dom";
+
 
 export default function LoginPage() {
   const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -17,8 +20,9 @@ export default function LoginPage() {
         senha,
       });
 
-      login(response.data.token);
-      alert("Login realizado com sucesso!");
+      login(response.data.access_token);
+      navigate("/");
+
     } catch (error) {
       alert("Erro ao fazer login");
     }
