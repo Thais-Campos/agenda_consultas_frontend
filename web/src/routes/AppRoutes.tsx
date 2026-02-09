@@ -3,6 +3,7 @@ import LoginPage from "../pages/login/LoginPage";
 import PrivateRoute from "./PrivateRoute";
 import AppLayout from "../layouts/AppLayout";
 import ClientesPage from "../pages/clientes/ClientesPage";
+import ServicosPage from "../pages/servicos/ServicoPage";
 
 function Home() {
   return (
@@ -27,9 +28,12 @@ export default function AppRoutes() {
               <AppLayout />
             </PrivateRoute>
           }
+          
         >
           <Route index element={<Home />} />
             <Route path="clientes" element={<ClientesPage />} />
+            <Route path="servicos" element={<ServicosPage />} />
+
         </Route>
       </Routes>
     </BrowserRouter>
