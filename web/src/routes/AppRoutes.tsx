@@ -4,6 +4,7 @@ import PrivateRoute from "./PrivateRoute";
 import AppLayout from "../layouts/AppLayout";
 import ClientesPage from "../pages/clientes/ClientesPage";
 import ServicosPage from "../pages/servicos/ServicoPage";
+import AgendamentosPage from "../pages/agendamentos/AgendamentosPage";
 
 function Home() {
   return (
@@ -33,6 +34,8 @@ export default function AppRoutes() {
           <Route index element={<Home />} />
             <Route path="clientes" element={<ClientesPage />} />
             <Route path="servicos" element={<ServicosPage />} />
+            <Route path="agendamentos" element={<AgendamentosPage />} />
+
 
         </Route>
       </Routes>
