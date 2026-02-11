@@ -4,6 +4,7 @@ import PrivateRoute from "./PrivateRoute";
 import AppLayout from "../layouts/AppLayout";
 import ClientesPage from "../pages/clientes/ClientesPage";
 import ServicosPage from "../pages/servicos/ServicoPage";
+
 import AgendamentosPage from "../pages/agendamentos/AgendamentosPage";
 
 function Home() {
