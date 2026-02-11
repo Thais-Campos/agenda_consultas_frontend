@@ -4,16 +4,7 @@ import PrivateRoute from "./PrivateRoute";
 import AppLayout from "../layouts/AppLayout";
 import ClientesPage from "../pages/clientes/ClientesPage";
 import ServicosPage from "../pages/servicos/ServicoPage";
-
 import AgendamentosPage from "../pages/agendamentos/AgendamentosPage";
-
-function Home() {
-  return (
-    <div>
-      <h1 className="text-2xl font-semibold">Área Protegida</h1>
-    </div>
-  );
-}
 
 export default function AppRoutes() {
   return (
@@ -30,12 +21,12 @@ export default function AppRoutes() {
               <AppLayout />
             </PrivateRoute>
           }
-          
+
         >
-          <Route index element={<Home />} />
-            <Route path="clientes" element={<ClientesPage />} />
-            <Route path="servicos" element={<ServicosPage />} />
-            <Route path="agendamentos" element={<AgendamentosPage />} />
+          <Route index element={<AgendamentosPage />} />
+          <Route path="clientes" element={<ClientesPage />} />
+          <Route path="servicos" element={<ServicosPage />} />
+          <Route path="agendamentos" element={<AgendamentosPage />} />
 
 
         </Route>

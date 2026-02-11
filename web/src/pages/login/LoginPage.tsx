@@ -7,12 +7,15 @@ import { useNavigate } from "react-router-dom";
 export default function LoginPage() {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
-
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [erro, setErro] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setLoading(true);
+    setErro(null);
 
     try {
       const response = await api.post("/auth/login", {
@@ -21,10 +24,12 @@ export default function LoginPage() {
       });
 
       login(response.data.access_token);
-      navigate("/");
+      setLoading(false);
+      navigate("/agendamentos");
 
     } catch (error) {
-      alert("Erro ao fazer login");
+      setLoading(false);
+      setErro("Email ou senha inválidos");
     }
   }
 
@@ -58,14 +63,24 @@ export default function LoginPage() {
           />
         </div>
 
-
         <button
           type="submit"
-          className="w-full bg-emerald-600 p-3 rounded-md font-semibold text-white transition hover:bg-emerald-500 active:scale-[0.98]"
+          disabled={loading}
+          className={`w-full p-3 rounded-md font-semibold text-white transition
+    ${loading
+              ? "bg-emerald-400 cursor-not-allowed"
+              : "bg-emerald-600 hover:bg-emerald-500 active:scale-[0.98]"
+            }`}
         >
-          Entrar
+          {loading ? "Entrando..." : "Entrar"}
         </button>
 
+
+        {erro && (
+          <p className="text-sm text-red-400 text-center">
+            {erro}
+          </p>
+        )}
 
       </form>
     </div>
