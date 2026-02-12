@@ -6,6 +6,7 @@ import ClientesPage from "../pages/clientes/ClientesPage";
 import ServicosPage from "../pages/servicos/ServicoPage";
 import AgendamentosPage from "../pages/agendamentos/AgendamentosPage";
 import DashboardPage from "../pages/dashboard/DashboardPage";
+import HistoricoPage from "../pages/agendamentos/HistoricoPage";
 
 export default function AppRoutes() {
   return (
@@ -28,7 +29,7 @@ export default function AppRoutes() {
           <Route path="clientes" element={<ClientesPage />} />
           <Route path="servicos" element={<ServicosPage />} />
           <Route path="agendamentos" element={<AgendamentosPage />} />
-
+          <Route path="historico" element={<HistoricoPage />} />
 
         </Route>
       </Routes>

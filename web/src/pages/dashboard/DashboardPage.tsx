@@ -30,20 +30,26 @@ export default function DashboardPage() {
                 const clientes = await api.get("/clientes?page=1&limit=100");
                 const servicos = await api.get("/servicos?page=1&limit=100");
                 const agendamentos = await api.get("/agendamentos?page=1&limit=100");
-                
+
 
 
                 setTotalClientes(clientes.data.meta.total);
                 setTotalServicos(servicos.data.meta.total);
                 setTotalAgendamentos(agendamentos.data.meta.total);
 
-                const hoje = new Date().toISOString().split("T")[0];
+                const hoje = new Date();
+                hoje.setHours(0, 0, 0, 0);
 
-                const agendHoje = agendamentos.data.data.filter((ag: any) =>
-                    ag.dataHora.startsWith(hoje)
-                );
+                const amanha = new Date(hoje);
+                amanha.setDate(amanha.getDate() + 1);
 
-                setAgendamentosHoje(agendHoje.length);
+                const totalHoje = agendamentos.data.data.filter((a: any) => {
+                    const data = new Date(a.dataHora);
+                    return data >= hoje && data < amanha;
+                }).length;
+
+                setAgendamentosHoje(totalHoje);
+
 
 
             } catch (error) {
