@@ -87,6 +87,7 @@ export default function AgendamentosPage() {
 
     try {
       await criarAgendamento(payload);
+      
 
       // Recarrega a lista
       const response = await listarAgendamentos(page, 10);

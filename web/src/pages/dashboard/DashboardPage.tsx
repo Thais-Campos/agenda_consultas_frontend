@@ -27,9 +27,9 @@ export default function DashboardPage() {
     useEffect(() => {
         async function carregarDados() {
             try {
-                const clientes = await api.get("/clientes?page=1&limit=100");
-                const servicos = await api.get("/servicos?page=1&limit=100");
-                const agendamentos = await api.get("/agendamentos?page=1&limit=100");
+                const clientes = await api.get("/clientes?page=1&limit=1");
+                const servicos = await api.get("/servicos?page=1&limit=1");
+                const agendamentos = await api.get("/agendamentos?page=1&limit=1");
 
 
 
