@@ -19,21 +19,60 @@ export default function AppLayout() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
-      <header className="h-14 bg-zinc-900 flex items-center justify-between px-6">
-        <h1 className="font-semibold">Agenda de Consultas</h1>
+  <div className="flex min-h-screen bg-zinc-950 text-zinc-100">
 
-        <button
-          onClick={confirmarLogout}
-          className="px-4 py-2 rounded bg-zinc-700 hover:bg-zinc-600"
-        >
-          Sair
-        </button>
-      </header>
+    {/* SIDEBAR */}
+    <aside className="w-64 bg-zinc-900 p-6 flex flex-col justify-between">
+      <div>
+        <h1 className="text-xl font-bold mb-8 text-orange-500">
+          Agenda
+        </h1>
 
-      <main className="p-6">
-        <Outlet />
-      </main>
-    </div>
-  );
+        <nav className="space-y-3">
+          <button
+            onClick={() => navigate("/")}
+            className="w-full text-left px-3 py-2 rounded hover:bg-zinc-800"
+          >
+            Dashboard
+          </button>
+
+          <button
+            onClick={() => navigate("/clientes")}
+            className="w-full text-left px-3 py-2 rounded hover:bg-zinc-800"
+          >
+            Clientes
+          </button>
+
+          <button
+            onClick={() => navigate("/servicos")}
+            className="w-full text-left px-3 py-2 rounded hover:bg-zinc-800"
+          >
+            Serviços
+          </button>
+
+          <button
+            onClick={() => navigate("/agendamentos")}
+            className="w-full text-left px-3 py-2 rounded hover:bg-zinc-800"
+          >
+            Agendamentos
+          </button>
+        </nav>
+      </div>
+
+      <button
+        onClick={handleLogout}
+        className="mt-10 px-4 py-2 rounded bg-zinc-700 hover:bg-zinc-600"
+      >
+        Sair
+      </button>
+    </aside>
+
+    {/* CONTEÚDO */}
+    <main className="flex-1 p-8">
+      <Outlet />
+    </main>
+
+  </div>
+);
+
 }

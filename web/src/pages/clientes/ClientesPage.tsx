@@ -4,7 +4,7 @@ import { atualizarCliente, criarCliente, excluirCliente, listarClientes } from "
 type Cliente = {
   id: number;
   nome: string;
-  email: string;
+  telefone: string;
 };
 
 export default function ClientesPage() {
@@ -12,7 +12,7 @@ export default function ClientesPage() {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [nome, setNome] = useState("");
-  const [email, setEmail] = useState("");
+  const [telefone, setTelefone] = useState("");
   const [clienteEditando, setClienteEditando] = useState<Cliente | null>(null);
 
 
@@ -29,14 +29,14 @@ export default function ClientesPage() {
 
   async function handleSalvar() {
     if (clienteEditando) {
-      await atualizarCliente(clienteEditando.id, { nome, email });
+      await atualizarCliente(clienteEditando.id, { nome, telefone });
       setClienteEditando(null);
     } else {
-      await criarCliente({ nome, email });
+      await criarCliente({ nome, telefone });
     }
 
     setNome("");
-    setEmail("");
+    setTelefone("");
 
     const response = await listarClientes(page, 10);
     setClientes(response.data);
@@ -46,7 +46,7 @@ export default function ClientesPage() {
   function handleEditar(cliente: Cliente) {
     setClienteEditando(cliente);
     setNome(cliente.nome);
-    setEmail(cliente.email);
+    setTelefone(cliente.telefone);
   }
 
   async function handleExcluir(id: number) {
@@ -75,10 +75,10 @@ export default function ClientesPage() {
 
 
         <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          type="text"
+          placeholder="Telefone"
+          value={telefone}
+          onChange={(e) => setTelefone(e.target.value)}
           className="flex-1 bg-zinc-800 p-2 rounded outline-none"
         />
 
@@ -101,7 +101,7 @@ export default function ClientesPage() {
           >
             <div>
               <p className="font-medium">{cliente.nome}</p>
-              <p className="text-sm text-zinc-400">{cliente.email}</p>
+              <p className="text-sm text-zinc-400">{cliente.telefone}</p>
             </div>
 
             <button

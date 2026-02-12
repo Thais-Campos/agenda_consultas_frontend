@@ -10,7 +10,7 @@ export async function listarClientes(page = 1, limit = 10) {
 
 export async function criarCliente(dados: {
   nome: string;
-  email: string;
+  telefone: string;
 }) {
   const response = await api.post("/clientes", dados);
   return response.data;
@@ -18,7 +18,7 @@ export async function criarCliente(dados: {
 
 export async function atualizarCliente(
   id: number,
-  dados: { nome: string; email: string }
+  dados: { nome: string; telefone: string }
 ) {
   const response = await api.put(`/clientes/${id}`, dados);
   return response.data;
