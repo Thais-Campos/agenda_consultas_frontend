@@ -1,8 +1,8 @@
 import { api } from "./api";
 
-export async function listarClientes(page = 1, limit = 10) {
+export async function listarClientes(page = 1, limit = 10, busca = "") {
   const response = await api.get("/clientes", {
-    params: { page, limit },
+    params: { page, limit, busca },
   });
 
   return response.data;
